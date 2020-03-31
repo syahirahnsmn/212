@@ -4,20 +4,22 @@
 #include <chrono>
 using namespace std;
 
-void insertionSort(int S[], int n)
+void selectionSort(int S[], int n)
 {
-    int temp, j;
+    int minId, temp, j;
 
     //Sorting array
     for(int i=1;i<=n;i++){
-        temp=S[i];
-        for(j=i-1;j>=0;j--){
-            if(S[j]>temp){
-                S[j+1]=S[j]; //swap the current array index with the next index, so larger number will be put to the next
+        minId=i; //track minimum index
+        for(j=i+1;j<n+1;j++){
+            if(S[j]<S[minId]){
+                minId=j; //when adjacent element is smaller, replace its index as minimum index
             }
-            else break;
+
         }
-        S[j+1]=temp;
+        temp=S[i];
+        S[i]=S[minId]; //update current element to the front
+        S[minId]=temp; //update minimum index to temp (the current
     }
 }
 
@@ -34,8 +36,11 @@ void readingArr(int S[], int n)
 }
 void printArr(int S[], int n)
 {
-    for (int i=0;i<n;i++){
-                   cout<<S[i]<<" ";
+    for (int i=1;i<=n;i++){
+        if(i<n)
+            cout<<S[i]<<", ";
+        else
+            cout<<S[i]<<". ";
     }
 }
 
@@ -102,7 +107,7 @@ int main()
 
                 // !!! Call your algorithm/function here !!!
                 readingArr(S, n); //read random generated number into array
-                insertionSort(S, n); //sorting array
+                selectionSort(S, n); //sorting array
                     cout<<"\n\n\t\tSorted array:\n"
                         <<"\t\t----------------------------------\n\t\t"<<endl;
                     cout<<"\t\t";
