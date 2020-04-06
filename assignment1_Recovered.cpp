@@ -9,9 +9,9 @@ void selectionSort(int S[], int n)
     int minId, temp, j;
     int counter=0;
     //Sorting array
-    counter=2;
+    counter+=2;
     for(int i=0;i<n-1;i++){
-        counter+=3;
+        counter+=4;
         minId=i; //track minimum index
         counter+=1;
         counter+=3;
@@ -82,6 +82,7 @@ void minmaxArr(int S[],int n)
 void readingArr(int S[], int n)
 {
     int i;
+    srand (time(NULL));
     for (i=0;i<n;i++){
         S[i] = 1+ rand() % 100; //insert random number into array
             cout<<S[i]<<" ";
@@ -159,14 +160,13 @@ int main()
                     cout<<"\n\nSorted array:\n"
                         <<"---------------------------------\n"<<endl;
                         //call function printArr
-                    printArr(S, n);
 
                 // Finish time
                 auto t2 = chrono::high_resolution_clock::now();
 
                 // Calculate runtime (Finish time - start time)
                 auto runtime = chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();
-
+                printArr(S, n);
 
                 cout << "\n\nRuntime = " << runtime << " nanoseconds";
 
