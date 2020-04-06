@@ -157,15 +157,16 @@ int main()
                 // !!! Call your algorithm/function here !!
                 selectionSort(S, n); //sorting array
 
-                    cout<<"\n\nSorted array:\n"
-                        <<"---------------------------------\n"<<endl;
-                        //call function printArr
 
                 // Finish time
                 auto t2 = chrono::high_resolution_clock::now();
 
                 // Calculate runtime (Finish time - start time)
                 auto runtime = chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();
+                 cout<<"\n\nSorted array:\n"
+                        <<"---------------------------------\n"<<endl;
+                        //call function printArr
+
                 printArr(S, n);
 
                 cout << "\n\nRuntime = " << runtime << " nanoseconds";
