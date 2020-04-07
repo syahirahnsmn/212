@@ -9,30 +9,30 @@ void selectionSort(int S[], int n)
     int minId, temp, j;
     int counter=0;
     //Sorting array
-    counter+=2;
+    //counter+=2;
     for(int i=0;i<n-1;i++){
-        counter+=4;
+        //counter+=4;
         minId=i; //track minimum index
-        counter+=1;
-        counter+=3;
+        //counter+=1;
+        //counter+=3;
         for(j=i+1;j<n;j++){
-            counter+=3;
-            counter+=3;
+            //counter+=3;
+            //counter+=3;
             if(S[j]<S[minId]){
                 minId=j; //when adjacent element is smaller, replace its index as minimum index
-                counter+=1;
+                //counter+=1;
             }
 
         }
         temp=S[i];
-        counter+=2;
+        //counter+=2;
         S[i]=S[minId]; //update current element to the front
-        counter+=3;
+        //counter+=3;
         S[minId]=temp; //update minimum index to temp (the current element)
-        counter+=2;
+        //counter+=2;
 
     }
-    cout<<"\n\nPrimitive Operations: "<<counter<<endl;
+    //cout<<"\n\nPrimitive Operations: "<<counter<<endl;
 }
 
 void minmaxArr(int S[],int n,int& min, int& max)
@@ -120,10 +120,10 @@ int main()
                 cout<<"\n\t\tRandom number generated of size " <<n<< ":\n"
                     <<"\t\t----------------------------------\n\n\t\t";
                 int min,max;
-                readingArr(S, n); //read random generated number into array
 
                  // Start time
                 auto t1 = chrono::high_resolution_clock::now();
+                readingArr(S, n); //read random generated number into array
                 minmaxArr(S, n, min, max);
                 // Finish time
                 auto t2 = chrono::high_resolution_clock::now();
@@ -141,7 +141,7 @@ int main()
                 system("pause");
                 system("cls");
 
-                cout<<endl;
+
                 break;
         }
     case 2:
@@ -156,17 +156,17 @@ int main()
                     <<"----------------------------------\n\n";
                 readingArr(S, n); //read random generated number into array
                  // Start time
-                auto t1 = chrono::high_resolution_clock::now();
+                auto starttime = chrono::high_resolution_clock::now();
 
                 // !!! Call your algorithm/function here !!
                 selectionSort(S, n); //sorting array
 
 
                 // Finish time
-                auto t2 = chrono::high_resolution_clock::now();
+                auto endtime = chrono::high_resolution_clock::now();
 
                 // Calculate runtime (Finish time - start time)
-                auto runtime = chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();
+                auto runtime = chrono::duration_cast<chrono::nanoseconds>(endtime - starttime).count();
                  cout<<"\n\nSorted array:\n"
                         <<"---------------------------------\n"<<endl;
                         //call function printArr
