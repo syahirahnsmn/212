@@ -35,9 +35,8 @@ void selectionSort(int S[], int n)
     cout<<"\n\nPrimitive Operations: "<<counter<<endl;
 }
 
-void minmaxArr(int S[],int n)
+void minmaxArr(int S[],int n,int& min, int& max)
 {
-	int max , min;
 
     // Get the minimum and the maximum
     if (n == 1)
@@ -74,11 +73,9 @@ void minmaxArr(int S[],int n)
 		  }
 
       }
-      cout<<"\nThe maximum number in this array is:"<<max;
-      cout<<"\nThe minimum number in this array is:"<<min;
-      cout<<endl;
 
 }
+
 void readingArr(int S[], int n)
 {
     int i;
@@ -116,28 +113,35 @@ int main()
     case 1:
         {
             /*PART 1 - HAJAR*/
-                cout<<"\n\nTHIS ALGORITHM IS TO FIND THE MINIMUM AND THE MAXIMUM NUMBER IN THE ARRAY\n\n"
-                    <<"\nPlease insert your array size (suggested value 1000 - 10000):\n\n\t\t";
+                cout<<"\n\n\t\tTHIS ALGORITHM IS TO FIND THE MINIMUM AND THE MAXIMUM NUMBER IN THE ARRAY\n\n"
+                    <<"\n\t\tPlease insert your array size (suggested value 1000 - 10000):\n\n\t\t";
                 cin>>n;
                 int S[n];
-                cout<<"\nRandom number generated of size " <<n<< ":\n"
-                    <<"----------------------------------\n\n";
-
-
-                // Start time
-                auto t1 = chrono::high_resolution_clock::now();
+                cout<<"\n\t\tRandom number generated of size " <<n<< ":\n"
+                    <<"\t\t----------------------------------\n\n\t\t";
+                int min,max;
                 readingArr(S, n); //read random generated number into array
-                minmaxArr(S, n);
+
+                 // Start time
+                auto t1 = chrono::high_resolution_clock::now();
+                minmaxArr(S, n, min, max);
                 // Finish time
                 auto t2 = chrono::high_resolution_clock::now();
-
                 // Calculate runtime (Finish time - start time)
                 auto runtime = chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();
 
-                cout << "\n\nRuntime = " << runtime << " nanoseconds";
+                cout<<"\n\n\t\tThe maximum number in this array is:"<<max;
+                cout<<"\n\t\tThe minimum number in this array is:"<<min;
+                cout<<endl;
+
+                cout << "\n\nRuntime = " << runtime;
+
                 cout<<"\n\n\t\t";
+
                 system("pause");
                 system("cls");
+
+                cout<<endl;
                 break;
         }
     case 2:
