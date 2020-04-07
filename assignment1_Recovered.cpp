@@ -9,7 +9,7 @@ void selectionSort(int S[], int n)
     int minId, temp, j;
     int counter=0;
     //Sorting array
-    //counter+=2;
+    //counter+=3;
     for(int i=0;i<n-1;i++){
         //counter+=4;
         minId=i; //track minimum index
@@ -123,7 +123,8 @@ int main()
 
                  // Start time
                 auto t1 = chrono::high_resolution_clock::now();
-                readingArr(S, n); //read random generated number into array
+                readingArr(S, n); //we needed to put this function inside the clock, otherwise it will produce 0 nanoseconds
+                                    //in Computer 1. hence the situation.
                 minmaxArr(S, n, min, max);
                 // Finish time
                 auto t2 = chrono::high_resolution_clock::now();
