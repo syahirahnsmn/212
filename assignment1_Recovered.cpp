@@ -9,71 +9,77 @@ void selectionSort(int S[], int n)
     int minId, temp, j;
     int counter=0;
     //Sorting array
-    //counter+=3;
+    counter+=3;
     for(int i=0;i<n-1;i++){
-        //counter+=4;
         minId=i; //track minimum index
-        //counter+=1;
-        //counter+=3;
+        counter+=1;
+        counter+=3;
         for(j=i+1;j<n;j++){
-            //counter+=3;
-            //counter+=3;
+
+            counter+=3;
             if(S[j]<S[minId]){
                 minId=j; //when adjacent element is smaller, replace its index as minimum index
-                //counter+=1;
+                counter+=1;
             }
-
+            counter+=3;
         }
         temp=S[i];
-        //counter+=2;
+        counter+=2;
         S[i]=S[minId]; //update current element to the front
-        //counter+=3;
+        counter+=3;
         S[minId]=temp; //update minimum index to temp (the current element)
-        //counter+=2;
-
+        counter+=2;
+    counter+=4;
     }
-    //cout<<"\n\nPrimitive Operations: "<<counter<<endl;
+    cout<<"\n\nPrimitive Operations: "<<counter<<endl;
 }
 
 void minmaxArr(int S[],int n,int& min, int& max)
 {
-
     // Get the minimum and the maximum
-    if (n == 1)
-	  {
+    int counter=0;
+    counter=+1;
+    if (n == 1){
 	    max = S[1];
 	    min = S[1];
+	    counter+=4;
 	  }
-  	else
-  	  {
+  	else{
 	    //initialize min and max if there are more than one elements
-	  	if (S[1] > S[2])
-		  {
+	    counter+=3;
+	  	if (S[1] > S[2]){
 	      	max = S[1];
 	      	min = S[2];
+	      	counter+=4;
 		  }
-	  	else
-		  {
+	  	else{
 			max = S[2];
 	      	min = S[1];
+	      	counter+=4;
 	  	  }
-
-		//searching the maximum number in the array
-		for (int i = 3; i<n; i++)
-		  {
-	    	if (S[i] > max)
+        //searching the maximum number in the array
+        counter+=2;
+		for (int i = 3; i<n; i++){
+                counter+=2;
+	    	if (S[i] > max){
 	    		max = S[i];
+                counter+=2;
+            }
+            counter+=3;
 		  }
 
 		//searching the minimum number in the array
-		for (int i = 3; i<n; i++)
-		  {
+		counter+=2;
+		for (int i = 3; i<n; i++){
+            counter+=2;
 		  	if (S[i] <  min)
 	    		min = S[i];
+                counter+=2;
 		  }
-
+		  counter+=3;
       }
-
+      
+      cout<<"\n\nPrimitive Operations: "<<counter<<endl;
 }
 
 void readingArr(int S[], int n)
@@ -113,14 +119,15 @@ int main()
     case 1:
         {
             /*PART 1 - HAJAR*/
-                cout<<"\n\n\t\tTHIS ALGORITHM IS TO FIND THE MINIMUM AND THE MAXIMUM NUMBER IN THE ARRAY\n\n"
-                    <<"\n\t\tPlease insert your array size (suggested value 1000 - 10000):\n\n\t\t";
+                cout<<"\n\n\t\t-THIS ALGORITHM FINDS THE MINIMUM AND THE MAXIMUM NUMBER IN THE ARRAY-\n\n"
+                    <<"\n\t\tPlease insert your array size (suggested value 2000 - 12000):\n\n\t\t";
                 cin>>n;
                 int S[n];
                 cout<<"\n\t\tRandom number generated of size " <<n<< ":\n"
                     <<"\t\t----------------------------------\n\n\t\t";
+                //readingArr(S, n);
                 int min,max;
-
+                
                  // Start time
                 auto t1 = chrono::high_resolution_clock::now();
                 readingArr(S, n); //we needed to put this function inside the clock, otherwise it will produce 0 nanoseconds
@@ -149,16 +156,16 @@ int main()
         {
             /*PART 2 - SYAHIRAH*/
              cout<<"\n\n\t\t-THIS IS SORTING ALGORITHM USING SELECTION METHOD-\n\n\n"
-                    <<"\nPlease insert your array size (suggested value 1000 - 10000):\n\n";
+                    <<"\nPlease insert your array size (suggested value 2000 - 12000):\n\n";
                 cin>>n;
 
                 int S[n];
                 cout<<"\nRandom number generated of size " <<n<< ":\n"
                     <<"----------------------------------\n\n";
-                readingArr(S, n); //read random generated number into array
+                 //read random generated number into array
                  // Start time
                 auto starttime = chrono::high_resolution_clock::now();
-
+                readingArr(S, n);
                 // !!! Call your algorithm/function here !!
                 selectionSort(S, n); //sorting array
 
