@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <chrono>
+#include <iomanip>
 using namespace std;
 
 void selectionSort(int S[], int n)
@@ -60,7 +61,7 @@ void minmaxArr(int S[],int n,int& min, int& max)
         //searching the maximum number in the array
         counter+=2;
 		for (int i = 3; i<n; i++){
-                counter+=2;
+                //counter+=2;
 	    	if (S[i] > max){
 	    		max = S[i];
                 counter+=2;
@@ -78,7 +79,7 @@ void minmaxArr(int S[],int n,int& min, int& max)
 		  }
 		  counter+=3;
       }
-      
+
       cout<<"\n\nPrimitive Operations: "<<counter<<endl;
 }
 
@@ -125,24 +126,22 @@ int main()
                 int S[n];
                 cout<<"\n\t\tRandom number generated of size " <<n<< ":\n"
                     <<"\t\t----------------------------------\n\n\t\t";
-                //readingArr(S, n);
+                readingArr(S, n);
                 int min,max;
-                
+
                  // Start time
                 auto t1 = chrono::high_resolution_clock::now();
-                readingArr(S, n); //we needed to put this function inside the clock, otherwise it will produce 0 nanoseconds
-                                    //in Computer 1. hence the situation.
                 minmaxArr(S, n, min, max);
                 // Finish time
                 auto t2 = chrono::high_resolution_clock::now();
                 // Calculate runtime (Finish time - start time)
-                auto runtime = chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();
+                double runtime = chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();
 
                 cout<<"\n\n\t\tThe maximum number in this array is:"<<max;
                 cout<<"\n\t\tThe minimum number in this array is:"<<min;
                 cout<<endl;
 
-                cout << "\n\nRuntime = " << runtime;
+                 cout << "\n\nRuntime = " << fixed << runtime/1000000000 << setprecision(7) << " seconds";
 
                 cout<<"\n\n\t\t";
 
@@ -174,14 +173,14 @@ int main()
                 auto endtime = chrono::high_resolution_clock::now();
 
                 // Calculate runtime (Finish time - start time)
-                auto runtime = chrono::duration_cast<chrono::nanoseconds>(endtime - starttime).count();
+                double runtime = chrono::duration_cast<chrono::nanoseconds>(endtime - starttime).count();
                  cout<<"\n\nSorted array:\n"
                         <<"---------------------------------\n"<<endl;
                         //call function printArr
 
                 printArr(S, n);
 
-                cout << "\n\nRuntime = " << runtime << " nanoseconds";
+                cout << "\n\nRuntime = " << fixed << runtime/1000000000 << setprecision(7) << " seconds";
 
                 cout<<"\n\n\t\t";
 
